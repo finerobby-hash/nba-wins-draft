@@ -1,0 +1,418 @@
+{
+ "title": "NBA Wins Draft 2026-27",
+ "seasonEnd": "2027-04-11",
+ "owners": [
+  {
+   "name": "Robby",
+   "piece": "💰",
+   "color": "#C9A227"
+  },
+  {
+   "name": "Cole",
+   "piece": "🐕",
+   "color": "#8B5A2B"
+  },
+  {
+   "name": "Joey",
+   "piece": "🏎️",
+   "color": "#D7263D"
+  }
+ ],
+ "teams": [
+  {
+   "abbr": "NYK",
+   "team": "New York Knicks",
+   "conference": "East",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "BOS",
+   "team": "Boston Celtics",
+   "conference": "East",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "DEN",
+   "team": "Denver Nuggets",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "HOU",
+   "team": "Houston Rockets",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "IND",
+   "team": "Indiana Pacers",
+   "conference": "East",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "PHX",
+   "team": "Phoenix Suns",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "POR",
+   "team": "Portland Trail Blazers",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "LAC",
+   "team": "Los Angeles Clippers",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "NOP",
+   "team": "New Orleans Pelicans",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "MEM",
+   "team": "Memphis Grizzlies",
+   "conference": "West",
+   "owner": "Robby"
+  },
+  {
+   "abbr": "CLE",
+   "team": "Cleveland Cavaliers",
+   "conference": "East",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "OKC",
+   "team": "Oklahoma City Thunder",
+   "conference": "West",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "MIN",
+   "team": "Minnesota Timberwolves",
+   "conference": "West",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "DET",
+   "team": "Detroit Pistons",
+   "conference": "East",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "MIA",
+   "team": "Miami Heat",
+   "conference": "East",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "ATL",
+   "team": "Atlanta Hawks",
+   "conference": "East",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "DAL",
+   "team": "Dallas Mavericks",
+   "conference": "West",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "UTA",
+   "team": "Utah Jazz",
+   "conference": "West",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "CHI",
+   "team": "Chicago Bulls",
+   "conference": "East",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "MIL",
+   "team": "Milwaukee Bucks",
+   "conference": "East",
+   "owner": "Cole"
+  },
+  {
+   "abbr": "SAS",
+   "team": "San Antonio Spurs",
+   "conference": "West",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "PHI",
+   "team": "Philadelphia 76ers",
+   "conference": "East",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "TOR",
+   "team": "Toronto Raptors",
+   "conference": "East",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "ORL",
+   "team": "Orlando Magic",
+   "conference": "East",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "GSW",
+   "team": "Golden State Warriors",
+   "conference": "West",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "CHA",
+   "team": "Charlotte Hornets",
+   "conference": "East",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "WAS",
+   "team": "Washington Wizards",
+   "conference": "East",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "SAC",
+   "team": "Sacramento Kings",
+   "conference": "West",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "BKN",
+   "team": "Brooklyn Nets",
+   "conference": "East",
+   "owner": "Joey"
+  },
+  {
+   "abbr": "LAL",
+   "team": "Los Angeles Lakers",
+   "conference": "West",
+   "owner": "Joey"
+  }
+ ],
+ "lines": {
+  "ATL": 44.5,
+  "BOS": 51.5,
+  "BKN": 23.5,
+  "CHA": 38.5,
+  "CHI": 28,
+  "CLE": 47.5,
+  "DAL": 32.5,
+  "DEN": 48.5,
+  "DET": 50.5,
+  "GSW": 34.5,
+  "HOU": 52.5,
+  "IND": 44.5,
+  "LAC": 27.5,
+  "LAL": 48.5,
+  "MEM": 34.5,
+  "MIA": 42.5,
+  "MIL": 24.5,
+  "MIN": 50.5,
+  "NOP": 28,
+  "NYK": 48.5,
+  "OKC": 60.5,
+  "ORL": 40.5,
+  "PHI": 51.5,
+  "PHX": 38,
+  "POR": 43.5,
+  "SAC": 19,
+  "SAS": 58.5,
+  "TOR": 49.5,
+  "UTA": 35,
+  "WAS": 35
+ },
+ "linesNote": "Consensus in-season win totals from bet365, BetMGM, Caesars and FanDuel via VegasInsider (Oct 22, 2026). Edit this file to update.",
+ "draft": [
+  {
+   "abbr": "NYK",
+   "owner": "Robby",
+   "round": 0,
+   "pick": 0
+  },
+  {
+   "abbr": "CLE",
+   "owner": "Cole",
+   "round": 0,
+   "pick": 0
+  },
+  {
+   "abbr": "LAL",
+   "owner": "Joey",
+   "round": 0,
+   "pick": 0
+  },
+  {
+   "abbr": "SAS",
+   "owner": "Joey",
+   "round": 1,
+   "pick": 1
+  },
+  {
+   "abbr": "OKC",
+   "owner": "Cole",
+   "round": 1,
+   "pick": 2
+  },
+  {
+   "abbr": "BOS",
+   "owner": "Robby",
+   "round": 1,
+   "pick": 3
+  },
+  {
+   "abbr": "DEN",
+   "owner": "Robby",
+   "round": 2,
+   "pick": 4
+  },
+  {
+   "abbr": "MIN",
+   "owner": "Cole",
+   "round": 2,
+   "pick": 5
+  },
+  {
+   "abbr": "PHI",
+   "owner": "Joey",
+   "round": 2,
+   "pick": 6
+  },
+  {
+   "abbr": "TOR",
+   "owner": "Joey",
+   "round": 3,
+   "pick": 7
+  },
+  {
+   "abbr": "DET",
+   "owner": "Cole",
+   "round": 3,
+   "pick": 8
+  },
+  {
+   "abbr": "HOU",
+   "owner": "Robby",
+   "round": 3,
+   "pick": 9
+  },
+  {
+   "abbr": "IND",
+   "owner": "Robby",
+   "round": 4,
+   "pick": 10
+  },
+  {
+   "abbr": "MIA",
+   "owner": "Cole",
+   "round": 4,
+   "pick": 11
+  },
+  {
+   "abbr": "ORL",
+   "owner": "Joey",
+   "round": 4,
+   "pick": 12
+  },
+  {
+   "abbr": "GSW",
+   "owner": "Joey",
+   "round": 5,
+   "pick": 13
+  },
+  {
+   "abbr": "ATL",
+   "owner": "Cole",
+   "round": 5,
+   "pick": 14
+  },
+  {
+   "abbr": "PHX",
+   "owner": "Robby",
+   "round": 5,
+   "pick": 15
+  },
+  {
+   "abbr": "POR",
+   "owner": "Robby",
+   "round": 6,
+   "pick": 16
+  },
+  {
+   "abbr": "DAL",
+   "owner": "Cole",
+   "round": 6,
+   "pick": 17
+  },
+  {
+   "abbr": "CHA",
+   "owner": "Joey",
+   "round": 6,
+   "pick": 18
+  },
+  {
+   "abbr": "WAS",
+   "owner": "Joey",
+   "round": 7,
+   "pick": 19
+  },
+  {
+   "abbr": "UTA",
+   "owner": "Cole",
+   "round": 7,
+   "pick": 20
+  },
+  {
+   "abbr": "LAC",
+   "owner": "Robby",
+   "round": 7,
+   "pick": 21
+  },
+  {
+   "abbr": "NOP",
+   "owner": "Robby",
+   "round": 8,
+   "pick": 22
+  },
+  {
+   "abbr": "CHI",
+   "owner": "Cole",
+   "round": 8,
+   "pick": 23
+  },
+  {
+   "abbr": "SAC",
+   "owner": "Joey",
+   "round": 8,
+   "pick": 24
+  },
+  {
+   "abbr": "BKN",
+   "owner": "Joey",
+   "round": 9,
+   "pick": 25
+  },
+  {
+   "abbr": "MIL",
+   "owner": "Cole",
+   "round": 9,
+   "pick": 26
+  },
+  {
+   "abbr": "MEM",
+   "owner": "Robby",
+   "round": 9,
+   "pick": 27
+  }
+ ]
+}
