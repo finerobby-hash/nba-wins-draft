@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NBA Wins Draft 2026-27</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏀</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  :root {
+    --paper: #ffffff; --ink: #17130f; --muted: #6a645c; --rule: #d9d3ca; --rule-strong: #17130f;
+    --accent: #e8601c; --good: #1f7a3f; --bad: #b3261e; --wash: #f6f3ee;
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #15120f; --ink: #f1ece4; --muted: #a39b8f; --rule: #3a342c; --rule-strong: #f1ece4; --wash: #1e1a16; --good: #4fc27a; --bad: #f0665d; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; font-variant-numeric: tabular-nums; padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+  .mast { border-bottom: 3px double var(--rule-strong); padding-bottom: .5rem; margin-bottom: 1.25rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 7vw, 4rem); line-height: .95; margin: 0; letter-spacing: -.01em; }
+  .mast .meta { color: var(--muted); font-size: .9rem; text-align: right; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; line-height: 1; margin: 0 0 .6rem; padding-bottom: .3rem; border-bottom: 2px solid var(--rule-strong); }
+  .note { color: var(--muted); font-size: .85rem; margin: -.3rem 0 .6rem; }
+  section { margin-bottom: 2rem; }
+  .cols { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 860px) { .cols { grid-template-columns: 3fr 2fr; } .cols.even { grid-template-columns: 1fr 1fr; } .cols.three { grid-template-columns: 1fr 1fr 1fr; } }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: .35rem .4rem; text-align: left; border-bottom: 1px solid var(--rule); white-space: nowrap; vertical-align: middle; }
+  th { font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--muted); letter-spacing: .02em; }
+  td.n, th.n { text-align: right; }
+  tr:last-child td { border-bottom: 0; }
+  .stand td { font-size: 1.05rem; }
+  .stand td.w { font-family: var(--display); font-weight: 800; font-size: 1.9rem; line-height: 1; }
+  .stand tr.exp { cursor: pointer; }
+  .stand tr.exp td.owner::before { content: "▸"; display: inline-block; width: 1.1em; color: var(--muted); transition: transform .2s; }
+  .stand tr.exp[aria-expanded="true"] td.owner::before { transform: rotate(90deg); }
+  .stand tr.lead td.owner { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { .stand tr.exp td.owner::before { transition: none; } }
+  .stand tr.detail td { padding: 0 0 .5rem 1.6rem; background: var(--wash); }
+  .stand tr.detail table td, .stand tr.detail table th { font-size: .9rem; padding: .25rem .4rem; }
+  .owner-tag { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; }
+  .sw { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; flex: none; }
+  .tb { display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 1.4rem; border-radius: .3rem; font-family: var(--display); font-weight: 700; font-size: .8rem; letter-spacing: .03em; margin-right: .5rem; vertical-align: middle; flex: none; }
+  .tb::before { content: attr(data-abbr); }
+  .tm { display: inline-flex; align-items: center; }
+  .chart { position: relative; width: 100%; }
+  .chart svg { width: 100%; height: auto; display: block; }
+  .tip { position: absolute; pointer-events: none; display: none; background: var(--ink); color: var(--paper); font-size: .8rem; padding: .25rem .5rem; border-radius: .25rem; white-space: nowrap; }
+  .dg { margin: 0; padding-left: 1.2rem; }
+  .dg li { margin: .3rem 0; max-width: 72ch; }
+  .odds-bar { display: flex; height: .7rem; overflow: hidden; margin-top: .6rem; background: var(--wash); border-radius: .2rem; }
+  .odds-bar i { display: block; height: 100%; }
+  .win { color: var(--good); font-weight: 600; }
+  .out { color: var(--bad); }
+  .pos { color: var(--good); } .neg { color: var(--bad); }
+  th button { all: unset; cursor: pointer; font: inherit; color: inherit; }
+  th[aria-sort] button::after { content: " ▾"; } th[aria-sort="ascending"] button::after { content: " ▴"; }
+  th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .scroll { overflow-x: auto; }
+  .sub { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; }
+  .foot { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--rule); padding-top: .75rem; margin-top: 2rem; }
+  .err { background: var(--wash); border-left: 4px solid var(--bad); padding: .75rem 1rem; margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <h1 id="title">NBA Wins Draft</h1>
+    <div class="meta"><div id="updated">Loading…</div><div>Most combined regular-season wins on April 11 takes it</div></div>
+  </header>
+  <div id="error" class="err" hidden></div>
+
+  <div class="cols">
+    <section>
+      <h2>Standings</h2>
+      <p class="note">Tap an owner to see their teams by record. GB counts games in hand; Proj is projected final wins at Vegas pace</p>
+      <div class="scroll"><table class="stand" id="stand">
+        <thead><tr><th>Owner</th><th class="n">W</th><th class="n">L</th><th class="n">Pct</th><th class="n">GB</th><th class="n">Proj</th><th class="n">Vegas</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </section>
+    <section>
+      <h2>Projected wins over time</h2>
+      <div class="chart" id="rchart"><div class="tip" id="rtip"></div></div>
+    </section>
+  </div>
+
+  <section>
+    <h2>Digest</h2>
+    <ul class="dg" id="digest"></ul>
+  </section>
+
+  <div class="cols three">
+    <section>
+      <h2>Chance to win</h2>
+      <p class="note">10,000 simulations of the remaining schedule, each team at its Vegas win rate</p>
+      <table id="odds"><thead><tr><th>Owner</th><th class="n">Win %</th><th class="n">Floor</th><th class="n">Ceiling</th></tr></thead><tbody></tbody></table>
+      <div class="odds-bar" id="odds-bar"></div>
+    </section>
+    <section>
+      <h2>This week</h2>
+      <p class="note" id="week-note">Wins and losses since Monday</p>
+      <table id="week"><thead><tr><th>Owner</th><th class="n">W</th><th class="n">L</th><th class="n">Pct</th></tr></thead><tbody></tbody></table>
+    </section>
+    <section>
+      <h2>Magic numbers</h2>
+      <p class="note">Wins the leader needs to clinch; a rival is out when their max possible wins fall below the leader’s total</p>
+      <table id="magic"><thead><tr><th>Owner</th><th class="n">Max possible</th><th class="n">Magic #</th><th>Status</th></tr></thead><tbody></tbody></table>
+    </section>
+  </div>
+
+  <div class="cols even">
+    <section>
+      <h2>Draft report card</h2>
+      <p class="note">Snake draft, Joey–Cole–Robby; K is the keeper. Each pick shows record, projected wins and value vs its slot. Grades are rounds won</p>
+      <div class="scroll"><table id="draft"><thead><tr><th class="n">Rd</th><th>Robby</th><th>Cole</th><th>Joey</th></tr></thead><tbody></tbody></table></div>
+      <p class="sub" id="grades"></p>
+      <p class="sub" id="steals"></p>
+    </section>
+    <section>
+      <h2>Milestones</h2>
+      <p class="note">First to each mark; dates are projected at current pace</p>
+      <table id="ms"><thead><tr><th class="n">Wins</th><th>Robby</th><th>Cole</th><th>Joey</th></tr></thead><tbody></tbody></table>
+    </section>
+  </div>
+
+  <h2 style="border:0; margin-bottom:.2rem;">Team power rankings</h2>
+  <p class="note">Ranked by projected final wins. Tap a column header to sort</p>
+  <div class="cols even">
+    <section><h2>East</h2><div class="scroll"><table class="conf" data-conf="East"></table></div></section>
+    <section><h2>West</h2><div class="scroll"><table class="conf" data-conf="West"></table></div></section>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+(async function () {
+  const $ = s => document.querySelector(s);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const TEAM_COLORS = { ATL: ['#C8102E', '#FDB927'], BOS: ['#007A33', '#BA9653'], BKN: ['#000000', '#FFFFFF'], CHA: ['#1D1160', '#00788C'], CHI: ['#CE1141', '#000000'],
+    CLE: ['#860038', '#FDBB30'], DAL: ['#00538C', '#002B5E'], DEN: ['#0E2240', '#FEC524'], DET: ['#C8102E', '#1D42BA'], GSW: ['#1D428A', '#FFC72C'],
+    HOU: ['#CE1141', '#000000'], IND: ['#002D62', '#FDBB30'], LAC: ['#C8102E', '#1D428A'], LAL: ['#552583', '#FDB927'], MEM: ['#5D76A9', '#12173F'],
+    MIA: ['#98002E', '#F9A01B'], MIL: ['#00471B', '#EEE1C6'], MIN: ['#0C2340', '#236192'], NOP: ['#0C2340', '#C8102E'], NYK: ['#006BB6', '#F58426'],
+    OKC: ['#007AC1', '#EF6625'], ORL: ['#0077C0', '#C4CED4'], PHI: ['#006BB6', '#ED174C'], PHX: ['#1D1160', '#E56020'], POR: ['#E03A3E', '#000000'],
+    SAC: ['#5A2D81', '#63727A'], SAS: ['#C4CED4', '#000000'], TOR: ['#CE1141', '#000000'], UTA: ['#002B5C', '#F9A01B'], WAS: ['#002B5C', '#E31837'] };
+  const LIGHT = ['#FFFFFF', '#EEE1C6', '#C4CED4', '#FDB927', '#FDBB30', '#FEC524', '#FFC72C', '#F9A01B'];
+
+  let cfg, standings, history;
+  try {
+    const bust = '?t=' + Math.floor(Date.now() / 600000);
+    [cfg, standings, history] = await Promise.all(['config.json', 'data/standings.json', 'data/history.json'].map(u => fetch(u + bust).then(r => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); })));
+  } catch (e) {
+    $('#error').hidden = false; $('#error').textContent = 'Could not load the data files (' + e.message + '). If you just set this up, make sure config.json and the data folder are in the repo.';
+    return;
+  }
+
+  document.title = cfg.title; $('#title').textContent = cfg.title;
+  const OWNERS = cfg.owners.map(o => o.name);
+  const ownerCfg = Object.fromEntries(cfg.owners.map(o => [o.name, o]));
+  const color = o => ownerCfg[o].color;
+  const piece = o => ownerCfg[o].piece;
+  const upd = new Date(standings.updated);
+  $('#updated').textContent = 'Records through ' + upd.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + standings.source;
+
+  // ---- derived data
+  const rec = Object.fromEntries(standings.teams.map(t => [t.abbr, t]));
+  const teams = cfg.teams.map(t => {
+    const w = rec[t.abbr] ? rec[t.abbr].wins : 0, l = rec[t.abbr] ? rec[t.abbr].losses : 0, line = cfg.lines[t.abbr];
+    const remaining = 82 - w - l, proj = Math.round((w + line / 82 * remaining) * 10) / 10;
+    return { ...t, wins: w, losses: l, line, remaining, proj, vsLine: Math.round((proj - line) * 10) / 10, pct: (w + l) ? w / (w + l) : 0 };
+  }).sort((a, b) => b.proj - a.proj || b.wins - a.wins);
+  teams.forEach((t, i) => t.rank = i + 1);
+
+  const owners = OWNERS.map(o => { const mine = teams.filter(t => t.owner === o); const wins = d3.sum(mine, t => t.wins), losses = d3.sum(mine, t => t.losses);
+    return { owner: o, wins, losses, games: wins + losses, pctNum: (wins + losses) ? wins / (wins + losses) : 0, proj: Math.round(d3.sum(mine, t => t.proj) * 10) / 10, baseline: d3.sum(mine, t => t.line), remaining: d3.sum(mine, t => t.remaining) }; });
+  owners.sort((a, b) => b.pctNum - a.pctNum || b.wins - a.wins);
+  const lead = owners[0];
+  for (const o of owners) { o.gb = ((lead.wins - o.wins) + (o.losses - lead.losses)) / 2; o.pct = o.pctNum.toFixed(3).replace(/^0/, ''); o.record = o.wins + '-' + o.losses; }
+  const projRank = [...owners].sort((a, b) => b.proj - a.proj); projRank.forEach((o, i) => o.prank = i + 1);
+  const fmtDelta = v => (v > 0 ? '+' : '') + v.toFixed(1);
+  const recOf = t => t.wins + '-' + t.losses;
+
+  function badge(abbr) { const [bg, ring] = TEAM_COLORS[abbr] || ['#888', '#fff']; const b = el('span', 'tb'); b.dataset.abbr = abbr; b.style.background = bg; b.style.boxShadow = 'inset 0 0 0 2px ' + ring; b.style.color = LIGHT.includes(bg) ? '#111' : '#fff'; return b; }
+  function teamCell(t) { const td = el('td'); const tm = el('span', 'tm'); tm.appendChild(badge(t.abbr)); tm.appendChild(document.createTextNode(t.team)); td.appendChild(tm); return td; }
+  function ownerCell(o) { const td = el('td', 'owner'); const tag = el('span', 'owner-tag'); const sw = el('span', 'sw'); sw.style.background = color(o); tag.appendChild(sw); tag.appendChild(document.createTextNode(o)); td.appendChild(tag); return td; }
+
+  // ---- standings
+  const open = new Set();
+  function drawStandings() {
+    const tb = $('#stand tbody'); tb.textContent = '';
+    for (const o of owners) {
+      const tr = el('tr', 'exp'); if (o.gb === 0) tr.classList.add('lead');
+      tr.setAttribute('aria-expanded', open.has(o.owner));
+      tr.appendChild(ownerCell(o.owner));
+      [[String(o.wins), 'n w'], [String(o.losses), 'n'], [o.pct, 'n'], [o.gb === 0 ? '—' : o.gb.toFixed(1), 'n'], [o.proj.toFixed(1), 'n'], [o.baseline.toFixed(1), 'n']].forEach(([v, c]) => tr.appendChild(el('td', c, v)));
+      tr.addEventListener('click', () => { open.has(o.owner) ? open.delete(o.owner) : open.add(o.owner); drawStandings(); });
+      tb.appendChild(tr);
+      if (open.has(o.owner)) {
+        const dtr = el('tr', 'detail'); const dtd = el('td'); dtd.colSpan = 7;
+        const t = el('table'); t.innerHTML = '<thead><tr><th>Team</th><th class="n">W</th><th class="n">L</th><th class="n">O/U</th><th class="n">Proj</th></tr></thead><tbody></tbody>';
+        const mine = teams.filter(x => x.owner === o.owner).sort((a, b) => b.pct - a.pct || b.wins - a.wins || a.losses - b.losses);
+        for (const x of mine) { const r = el('tr'); r.appendChild(teamCell(x)); [String(x.wins), String(x.losses), String(x.line), x.proj.toFixed(1)].forEach(v => r.appendChild(el('td', 'n', v))); t.querySelector('tbody').appendChild(r); }
+        dtd.appendChild(t); dtr.appendChild(dtd); tb.appendChild(dtr);
+      }
+    }
+  }
+  drawStandings();
+
+  // ---- projected wins chart
+  function drawRankChart() {
+    const box = $('#rchart'), tip = $('#rtip');
+    const data = history.map(h => ({ date: new Date(h.date), owner: h.owner, proj: +h.proj, wins: +h.wins, losses: +h.losses })).filter(d => !isNaN(d.date));
+    box.querySelectorAll('svg').forEach(s => s.remove());
+    if (!data.length) return;
+    const w = Math.max(320, box.clientWidth), h = 240, m = { t: 14, r: 86, b: 28, l: 40 };
+    const svg = d3.select(box).append('svg').attr('viewBox', '0 0 ' + w + ' ' + h);
+    const dates = [...new Set(data.map(d => +d.date))].sort((a, b) => a - b);
+    const x = d3.scaleTime([new Date(dates[0]), new Date(dates[dates.length - 1])], [m.l, w - m.r]);
+    const lo = d3.min(data, d => d.proj), hi = d3.max(data, d => d.proj), pad = Math.max(3, (hi - lo) * .25);
+    const y = d3.scaleLinear([lo - pad, hi + pad], [h - m.b, m.t]).nice();
+    const fmt = d3.utcFormat('%b %-d');
+    const g = svg.append('g');
+    g.selectAll('line').data(y.ticks(4)).join('line').attr('x1', m.l).attr('x2', w - m.r).attr('y1', d => y(d)).attr('y2', d => y(d)).attr('stroke', 'var(--rule)');
+    g.selectAll('text.y').data(y.ticks(4)).join('text').attr('x', m.l - 8).attr('y', d => y(d)).attr('dy', '.35em').attr('text-anchor', 'end').attr('fill', 'var(--muted)').attr('font-size', 11).text(d => d);
+    g.selectAll('text.x').data(x.ticks(5)).join('text').attr('x', d => x(d)).attr('y', h - m.b + 16).attr('text-anchor', 'middle').attr('fill', 'var(--muted)').attr('font-size', 11).text(d => fmt(d));
+    const line = d3.line().x(d => x(d.date)).y(d => y(d.proj));
+    const placed = [];
+    for (const o of OWNERS) {
+      const pts = data.filter(d => d.owner === o).sort((a, b) => a.date - b.date); if (!pts.length) continue;
+      g.append('path').attr('d', line(pts)).attr('fill', 'none').attr('stroke', color(o)).attr('stroke-width', 2.5).attr('stroke-linejoin', 'round');
+      const every = Math.max(1, Math.floor(pts.length / 12));
+      g.selectAll(null).data(pts.filter((d, i) => i % every === 0 || i === pts.length - 1)).join('text').attr('x', d => x(d.date)).attr('y', d => y(d.proj)).attr('dy', '.35em').attr('text-anchor', 'middle').attr('font-size', 17).text(piece(o))
+        .on('mousemove', (ev, d) => { tip.style.display = 'block'; tip.textContent = fmt(d.date) + ' ' + o + ' ' + d.wins + '-' + d.losses + ', ' + d.proj.toFixed(1) + ' proj'; const r = box.getBoundingClientRect(); tip.style.left = Math.min(ev.clientX - r.left + 10, r.width - tip.offsetWidth - 4) + 'px'; tip.style.top = (ev.clientY - r.top - 30) + 'px'; })
+        .on('mouseleave', () => tip.style.display = 'none');
+      const last = pts[pts.length - 1]; let ly = y(last.proj);
+      for (const py of placed) if (Math.abs(py - ly) < 13) ly = py + (ly >= py ? 13 : -13);
+      placed.push(ly);
+      g.append('text').attr('x', x(last.date) + 12).attr('y', ly).attr('dy', '.35em').attr('fill', color(o)).attr('font-size', 12).attr('font-weight', 600).text(o + ' ' + last.proj.toFixed(1));
+    }
+  }
+  drawRankChart(); addEventListener('resize', drawRankChart);
+
+  // ---- odds (Monte Carlo)
+  (function () {
+    let seed = 20262027; const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    const N = 10000, wins = {}, tot = {}; for (const o of OWNERS) { wins[o] = 0; tot[o] = []; }
+    for (let i = 0; i < N; i++) { const w = {}; for (const o of OWNERS) w[o] = 0;
+      for (const t of teams) { const p = t.line / 82; let k = t.wins; for (let g = 0; g < t.remaining; g++) if (rnd() < p) k++; w[t.owner] += k; }
+      let best = -1, who = []; for (const o of OWNERS) { if (w[o] > best) { best = w[o]; who = [o]; } else if (w[o] === best) who.push(o); }
+      for (const o of who) wins[o] += 1 / who.length; for (const o of OWNERS) tot[o].push(w[o]); }
+    const rows = OWNERS.map(o => { const a = tot[o].sort((x, y) => x - y); return { owner: o, pct: wins[o] / N * 100, p10: a[Math.floor(N * .1)], p90: a[Math.floor(N * .9)] }; }).sort((a, b) => b.pct - a.pct);
+    const tb = $('#odds tbody'); const bar = $('#odds-bar');
+    for (const r of rows) { const tr = el('tr'); tr.appendChild(ownerCell(r.owner)); tr.appendChild(el('td', 'n', r.pct.toFixed(1) + '%')); tr.appendChild(el('td', 'n', String(r.p10))); tr.appendChild(el('td', 'n', String(r.p90))); tb.appendChild(tr);
+      const i = el('i'); i.style.width = r.pct + '%'; i.style.background = color(r.owner); i.title = r.owner + ' ' + r.pct.toFixed(1) + '%'; bar.appendChild(i); }
+  })();
+
+  // ---- this week
+  (function () {
+    const now = new Date(); const day = (now.getUTCDay() + 6) % 7;
+    const mon = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - day)).toISOString().slice(0, 10);
+    const dates = [...new Set(history.map(h => h.date))].filter(d => d <= mon).sort(); const base = dates[dates.length - 1];
+    const b = {}; for (const h of history) if (h.date === base) b[h.owner] = h;
+    const rows = owners.map(o => { const s = b[o.owner] || { wins: 0, losses: 0 }; const w = o.wins - s.wins, l = o.losses - s.losses; return { owner: o.owner, w, l, pct: (w + l) ? (w / (w + l)).toFixed(3).replace(/^0/, '') : '—' }; }).sort((a, b) => b.w - a.w || a.l - b.l);
+    const tb = $('#week tbody'); for (const r of rows) { const tr = el('tr'); tr.appendChild(ownerCell(r.owner)); tr.appendChild(el('td', 'n', String(r.w))); tr.appendChild(el('td', 'n', String(r.l))); tr.appendChild(el('td', 'n', r.pct)); tb.appendChild(tr); }
+    $('#week-note').textContent = base ? 'Since the ' + d3.utcFormat('%b %-d')(new Date(base)) + ' snapshot, the last one before this Monday' : 'Since the start of the season';
+  })();
+
+  // ---- magic numbers
+  (function () {
+    const rows = owners.map(o => ({ owner: o.owner, wins: o.wins, max: o.wins + o.remaining })).sort((a, b) => b.wins - a.wins); const L = rows[0];
+    const tb = $('#magic tbody');
+    for (const r of rows) { const tr = el('tr'); tr.appendChild(ownerCell(r.owner)); tr.appendChild(el('td', 'n', String(r.max)));
+      let magic = '—', status; if (r.owner === L.owner) { const need = Math.max(...rows.filter(x => x !== r).map(x => x.max - r.wins + 1)); status = need <= 0 ? 'Clinched' : 'Leading'; if (need > 0) magic = String(need); } else status = r.max < L.wins ? 'Eliminated' : 'Alive';
+      tr.appendChild(el('td', 'n', magic)); const st = el('td', status === 'Eliminated' ? 'out' : status === 'Clinched' ? 'win' : '', status); tr.appendChild(st); tb.appendChild(tr); }
+  })();
+
+  // ---- draft report card
+  (function () {
+    const T = Object.fromEntries(teams.map(t => [t.abbr, t]));
+    const drafted = cfg.draft.filter(d => d.pick > 0).map(d => ({ ...d, proj: T[d.abbr].proj })).sort((a, b) => b.proj - a.proj);
+    const rankOf = {}; drafted.forEach((d, i) => rankOf[d.abbr] = i + 1);
+    const rounds = {}; for (const d of cfg.draft) { const t = T[d.abbr]; const row = rounds[d.round] = rounds[d.round] || {}; const v = d.pick > 0 ? d.pick - rankOf[d.abbr] : null; row[d.owner] = { text: t.abbr + ' ' + recOf(t) + ' · ' + t.proj.toFixed(1) + (v == null ? '' : ' (' + (v > 0 ? '+' : '') + v + ')'), proj: t.proj }; }
+    const won = Object.fromEntries(OWNERS.map(o => [o, 0])); const tb = $('#draft tbody');
+    for (const r of Object.keys(rounds).map(Number).sort((a, b) => a - b)) { const row = rounds[r]; const tr = el('tr'); tr.appendChild(el('td', 'n', r === 0 ? 'K' : String(r)));
+      const best = r === 0 ? null : OWNERS.reduce((a, b) => (row[a] && row[b] ? (row[a].proj >= row[b].proj ? a : b) : (row[a] ? a : b))); if (best) won[best]++;
+      for (const o of OWNERS) { const td = el('td', o === best ? 'win' : '', row[o] ? row[o].text : '—'); tr.appendChild(td); } tb.appendChild(tr); }
+    const grade = n => n >= 6 ? 'A' : n >= 4 ? 'B' : n >= 2 ? 'C' : 'D';
+    $('#grades').textContent = OWNERS.map(o => o + ': ' + won[o] + ' rounds, grade ' + grade(won[o])).join('   ');
+    drafted.forEach(d => d.value = d.pick - rankOf[d.abbr]); const byV = [...drafted].sort((a, b) => b.value - a.value || b.proj - a.proj);
+    const lab = d => d.abbr + ' (' + d.owner + ', pick ' + d.pick + ', ' + (d.value > 0 ? '+' : '') + d.value + ')';
+    $('#steals').textContent = 'Steals: ' + byV.slice(0, 3).map(lab).join(', ') + '. Reaches: ' + byV.slice(-3).reverse().map(lab).join(', ') + '.';
+  })();
+
+  // ---- milestones
+  (function () {
+    const END = new Date(cfg.seasonEnd + 'T04:00:00Z').getTime(), now = Date.now(), daysLeft = Math.max(1, (END - now) / 864e5);
+    const fmt = d3.utcFormat('%b %-d'); const tb = $('#ms tbody');
+    for (const mark of [100, 200, 300, 400]) { const tr = el('tr'); tr.appendChild(el('td', 'n', String(mark)));
+      for (const o of OWNERS) { const r = owners.find(x => x.owner === o); const rate = (r.proj - r.wins) / daysLeft; let v; if (r.wins >= mark) v = 'Reached'; else if (r.proj < mark) v = 'Not projected'; else v = '~' + fmt(new Date(now + (mark - r.wins) / rate * 864e5)); tr.appendChild(el('td', '', v)); }
+      tb.appendChild(tr); }
+  })();
+
+  // ---- conference tables
+  let sortKey = 'proj', sortDir = -1;
+  const COLS = [['owner', 'Owner'], ['team', 'Team'], ['wins', 'W', 'n'], ['losses', 'L', 'n'], ['line', 'O/U', 'n'], ['proj', 'Proj', 'n'], ['vsLine', 'vs line', 'n']];
+  function drawConf() {
+    document.querySelectorAll('.conf').forEach(table => {
+      table.textContent = '';
+      const thead = el('thead'), hr = el('tr');
+      for (const [k, label, cls] of COLS) { const th = el('th', cls || ''); if (k === sortKey) th.setAttribute('aria-sort', sortDir === 1 ? 'ascending' : 'descending'); const b = el('button', '', label); b.addEventListener('click', () => { if (k === sortKey) sortDir = -sortDir; else { sortKey = k; sortDir = typeof teams[0][k] === 'number' ? -1 : 1; } drawConf(); }); th.appendChild(b); hr.appendChild(th); }
+      thead.appendChild(hr); table.appendChild(thead);
+      const tb = el('tbody'); const rows = teams.filter(t => t.conference === table.dataset.conf).sort((a, b) => { const av = a[sortKey], bv = b[sortKey]; const c = typeof av === 'number' ? av - bv : String(av).localeCompare(String(bv)); return c * sortDir || a.rank - b.rank; });
+      for (const t of rows) { const tr = el('tr'); tr.appendChild(ownerCell(t.owner)); tr.appendChild(teamCell(t)); [String(t.wins), String(t.losses), String(t.line), t.proj.toFixed(1)].forEach(v => tr.appendChild(el('td', 'n', v))); tr.appendChild(el('td', 'n ' + (t.vsLine > 0 ? 'pos' : t.vsLine < 0 ? 'neg' : ''), fmtDelta(t.vsLine))); tb.appendChild(tr); }
+      table.appendChild(tb);
+    });
+  }
+  drawConf();
+
+  // ---- digest
+  (function () {
+    const out = []; const dates = [...new Set(history.map(h => h.date))].sort(); const prevDate = dates.length > 1 ? dates[dates.length - 2] : null;
+    const prev = {}; for (const h of history) if (h.date === prevDate) prev[h.owner] = +h.proj;
+    for (const o of owners) { const mine = teams.filter(t => t.owner === o.owner).sort((a, b) => b.pct - a.pct || b.wins - a.wins);
+      const best = mine.slice(0, 2).map(t => t.abbr + ' ' + recOf(t)).join(', '), worst = mine.slice(-2).reverse().map(t => t.abbr + ' ' + recOf(t)).join(', ');
+      let line = o.owner + ' (' + o.record + '): best ' + best + '; worst ' + worst + '. Projected ' + o.proj.toFixed(1);
+      if (prevDate && prev[o.owner] != null) line += ' (' + fmtDelta(o.proj - prev[o.owner]) + ' since ' + d3.utcFormat('%b %-d')(new Date(prevDate)) + ')';
+      out.push(line + '.'); }
+    const up = [...teams].sort((a, b) => b.vsLine - a.vsLine).slice(0, 3), down = [...teams].sort((a, b) => a.vsLine - b.vsLine).slice(0, 3);
+    out.push('Running hottest vs their line: ' + up.map(t => t.abbr + ' ' + recOf(t) + ' (+' + t.vsLine.toFixed(1) + ', ' + t.owner + ')').join(', ') + '.');
+    out.push('Running coldest: ' + down.map(t => t.abbr + ' ' + recOf(t) + ' (' + t.vsLine.toFixed(1) + ', ' + t.owner + ')').join(', ') + '.');
+    const unbeaten = teams.filter(t => !t.losses && t.wins), winless = teams.filter(t => !t.wins && t.losses);
+    if (unbeaten.length) out.push('Still unbeaten: ' + unbeaten.map(t => t.abbr + ' (' + t.owner + ')').join(', ') + '.');
+    if (winless.length) out.push('Still winless: ' + winless.map(t => t.abbr + ' (' + t.owner + ')').join(', ') + '.');
+    out.push('Projected finish: ' + projRank.map(r => r.owner + ' ' + r.proj.toFixed(1)).join(', ') + ' — a ' + (projRank[0].proj - projRank[projRank.length - 1].proj).toFixed(1) + '-win spread top to bottom.');
+    const ul = $('#digest'); for (const t of out) ul.appendChild(el('li', '', t));
+  })();
+
+  $('#foot').textContent = 'Lines: ' + cfg.linesNote + ' Standings refresh automatically each morning.';
+})();
+</script>
+</body>
+</html>
