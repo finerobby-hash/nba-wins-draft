@@ -1,0 +1,254 @@
+[
+{
+"date": "2026-10-20",
+"owner": "Robby",
+"wins": 0,
+"losses": 0,
+"proj": 416.0
+},
+{
+"date": "2026-10-20",
+"owner": "Cole",
+"wins": 0,
+"losses": 0,
+"proj": 423.0
+},
+{
+"date": "2026-10-20",
+"owner": "Joey",
+"wins": 0,
+"losses": 0,
+"proj": 405.0
+},
+{
+"date": "2026-10-25",
+"owner": "Robby",
+"wins": 12,
+"losses": 10,
+"proj": 416.8
+},
+{
+"date": "2026-10-25",
+"owner": "Cole",
+"wins": 12,
+"losses": 13,
+"proj": 422.4
+},
+{
+"date": "2026-10-25",
+"owner": "Joey",
+"wins": 12,
+"losses": 13,
+"proj": 404.5
+},
+{
+"date": "2026-10-27",
+"owner": "Robby",
+"wins": 17,
+"losses": 15,
+"proj": 417.5
+},
+{
+"date": "2026-10-27",
+"owner": "Cole",
+"wins": 19,
+"losses": 19,
+"proj": 415.8
+},
+{
+"date": "2026-10-27",
+"owner": "Joey",
+"wins": 16,
+"losses": 18,
+"proj": 398.4
+},
+{
+"date": "2026-10-28",
+"owner": "Robby",
+"wins": 20,
+"losses": 15,
+"proj": 418.8
+},
+{
+"date": "2026-10-28",
+"owner": "Cole",
+"wins": 19,
+"losses": 20,
+"proj": 415.1
+},
+{
+"date": "2026-10-28",
+"owner": "Joey",
+"wins": 17,
+"losses": 21,
+"proj": 397.6
+},
+{
+"date": "2026-10-30",
+"owner": "Robby",
+"wins": 25,
+"losses": 19,
+"proj": 419.6
+},
+{
+"date": "2026-10-30",
+"owner": "Cole",
+"wins": 24,
+"losses": 27,
+"proj": 414.0
+},
+{
+"date": "2026-10-30",
+"owner": "Joey",
+"wins": 22,
+"losses": 25,
+"proj": 398.1
+},
+{
+"date": "2026-11-01",
+"owner": "Robby",
+"wins": 31,
+"losses": 24,
+"proj": 419.8
+},
+{
+"date": "2026-11-01",
+"owner": "Cole",
+"wins": 29,
+"losses": 33,
+"proj": 413.4
+},
+{
+"date": "2026-11-01",
+"owner": "Joey",
+"wins": 28,
+"losses": 31,
+"proj": 398.1
+},
+{
+"date": "2026-11-03",
+"owner": "Robby",
+"wins": 36,
+"losses": 32,
+"proj": 418.5
+},
+{
+"date": "2026-11-03",
+"owner": "Cole",
+"wins": 33,
+"losses": 39,
+"proj": 412.3
+},
+{
+"date": "2026-11-03",
+"owner": "Joey",
+"wins": 38,
+"losses": 36,
+"proj": 400.8
+},
+{
+"date": "2026-11-05",
+"owner": "Robby",
+"wins": 42,
+"losses": 36,
+"proj": 419.2
+},
+{
+"date": "2026-11-05",
+"owner": "Cole",
+"wins": 37,
+"losses": 45,
+"proj": 411.4
+},
+{
+"date": "2026-11-05",
+"owner": "Joey",
+"wins": 42,
+"losses": 40,
+"proj": 400.8
+},
+{
+"date": "2026-11-07",
+"owner": "Robby",
+"wins": 44,
+"losses": 39,
+"proj": 418.8
+},
+{
+"date": "2026-11-07",
+"owner": "Cole",
+"wins": 42,
+"losses": 48,
+"proj": 412.2
+},
+{
+"date": "2026-11-07",
+"owner": "Joey",
+"wins": 46,
+"losses": 45,
+"proj": 400.3
+},
+{
+"date": "2026-11-12",
+"owner": "Robby",
+"wins": 60,
+"losses": 51,
+"proj": 420.4
+},
+{
+"date": "2026-11-12",
+"owner": "Cole",
+"wins": 51,
+"losses": 62,
+"proj": 409.4
+},
+{
+"date": "2026-11-12",
+"owner": "Joey",
+"wins": 59,
+"losses": 57,
+"proj": 401.2
+},
+{
+"date": "2026-11-16",
+"owner": "Robby",
+"wins": 72,
+"losses": 56,
+"proj": 423.7
+},
+{
+"date": "2026-11-16",
+"owner": "Cole",
+"wins": 59,
+"losses": 74,
+"proj": 407.8
+},
+{
+"date": "2026-11-16",
+"owner": "Joey",
+"wins": 65,
+"losses": 66,
+"proj": 399.4
+},
+{
+"date": "2026-11-21",
+"owner": "Robby",
+"wins": 85,
+"losses": 69,
+"proj": 423.6
+},
+{
+"date": "2026-11-21",
+"owner": "Cole",
+"wins": 75,
+"losses": 83,
+"proj": 410.7
+},
+{
+"date": "2026-11-21",
+"owner": "Joey",
+"wins": 75,
+"losses": 83,
+"proj": 396.6
+}
+]
