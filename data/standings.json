@@ -1,0 +1,156 @@
+{
+ "updated": "2026-11-21T08:00:00Z",
+ "source": "manual seed",
+ "teams": [
+  {
+   "abbr": "NYK",
+   "wins": 9,
+   "losses": 6
+  },
+  {
+   "abbr": "BOS",
+   "wins": 11,
+   "losses": 4
+  },
+  {
+   "abbr": "DEN",
+   "wins": 9,
+   "losses": 5
+  },
+  {
+   "abbr": "HOU",
+   "wins": 12,
+   "losses": 5
+  },
+  {
+   "abbr": "IND",
+   "wins": 5,
+   "losses": 11
+  },
+  {
+   "abbr": "PHX",
+   "wins": 8,
+   "losses": 7
+  },
+  {
+   "abbr": "POR",
+   "wins": 10,
+   "losses": 5
+  },
+  {
+   "abbr": "LAC",
+   "wins": 4,
+   "losses": 10
+  },
+  {
+   "abbr": "NOP",
+   "wins": 5,
+   "losses": 12
+  },
+  {
+   "abbr": "MEM",
+   "wins": 12,
+   "losses": 4
+  },
+  {
+   "abbr": "CLE",
+   "wins": 9,
+   "losses": 8
+  },
+  {
+   "abbr": "OKC",
+   "wins": 10,
+   "losses": 6
+  },
+  {
+   "abbr": "MIN",
+   "wins": 11,
+   "losses": 5
+  },
+  {
+   "abbr": "DET",
+   "wins": 10,
+   "losses": 5
+  },
+  {
+   "abbr": "MIA",
+   "wins": 9,
+   "losses": 6
+  },
+  {
+   "abbr": "ATL",
+   "wins": 10,
+   "losses": 6
+  },
+  {
+   "abbr": "DAL",
+   "wins": 8,
+   "losses": 7
+  },
+  {
+   "abbr": "UTA",
+   "wins": 3,
+   "losses": 14
+  },
+  {
+   "abbr": "CHI",
+   "wins": 4,
+   "losses": 11
+  },
+  {
+   "abbr": "MIL",
+   "wins": 1,
+   "losses": 15
+  },
+  {
+   "abbr": "SAS",
+   "wins": 13,
+   "losses": 3
+  },
+  {
+   "abbr": "PHI",
+   "wins": 13,
+   "losses": 3
+  },
+  {
+   "abbr": "TOR",
+   "wins": 6,
+   "losses": 10
+  },
+  {
+   "abbr": "ORL",
+   "wins": 7,
+   "losses": 8
+  },
+  {
+   "abbr": "GSW",
+   "wins": 8,
+   "losses": 8
+  },
+  {
+   "abbr": "CHA",
+   "wins": 4,
+   "losses": 11
+  },
+  {
+   "abbr": "WAS",
+   "wins": 6,
+   "losses": 11
+  },
+  {
+   "abbr": "SAC",
+   "wins": 1,
+   "losses": 14
+  },
+  {
+   "abbr": "BKN",
+   "wins": 3,
+   "losses": 12
+  },
+  {
+   "abbr": "LAL",
+   "wins": 14,
+   "losses": 3
+  }
+ ]
+}
