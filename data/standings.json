@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T10:00:01Z",
+ "updated": "2026-11-25T10:04:13Z",
  "source": "ESPN standings feed",
  "teams": [
   {
@@ -9,13 +9,13 @@
   },
   {
    "abbr": "BOS",
-   "wins": 11,
+   "wins": 12,
    "losses": 6
   },
   {
    "abbr": "DEN",
    "wins": 10,
-   "losses": 5
+   "losses": 6
   },
   {
    "abbr": "HOU",
@@ -69,7 +69,7 @@
   },
   {
    "abbr": "DET",
-   "wins": 10,
+   "wins": 11,
    "losses": 6
   },
   {
@@ -84,7 +84,7 @@
   },
   {
    "abbr": "DAL",
-   "wins": 10,
+   "wins": 11,
    "losses": 7
   },
   {
@@ -120,7 +120,7 @@
   {
    "abbr": "ORL",
    "wins": 7,
-   "losses": 9
+   "losses": 10
   },
   {
    "abbr": "GSW",
@@ -135,7 +135,7 @@
   {
    "abbr": "WAS",
    "wins": 7,
-   "losses": 11
+   "losses": 12
   },
   {
    "abbr": "SAC",
