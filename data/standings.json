@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-25T10:04:13Z",
+ "updated": "2026-11-26T10:02:02Z",
  "source": "ESPN standings feed",
  "teams": [
   {
    "abbr": "NYK",
-   "wins": 11,
+   "wins": 12,
    "losses": 6
   },
   {
@@ -19,7 +19,7 @@
   },
   {
    "abbr": "HOU",
-   "wins": 13,
+   "wins": 14,
    "losses": 5
   },
   {
@@ -30,17 +30,17 @@
   {
    "abbr": "PHX",
    "wins": 9,
-   "losses": 7
+   "losses": 8
   },
   {
    "abbr": "POR",
-   "wins": 11,
+   "wins": 12,
    "losses": 6
   },
   {
    "abbr": "LAC",
    "wins": 4,
-   "losses": 12
+   "losses": 13
   },
   {
    "abbr": "NOP",
@@ -49,22 +49,22 @@
   },
   {
    "abbr": "MEM",
-   "wins": 13,
+   "wins": 14,
    "losses": 5
   },
   {
    "abbr": "CLE",
    "wins": 9,
-   "losses": 9
+   "losses": 10
   },
   {
    "abbr": "OKC",
    "wins": 10,
-   "losses": 8
+   "losses": 9
   },
   {
    "abbr": "MIN",
-   "wins": 13,
+   "wins": 14,
    "losses": 5
   },
   {
@@ -75,7 +75,7 @@
   {
    "abbr": "MIA",
    "wins": 10,
-   "losses": 6
+   "losses": 7
   },
   {
    "abbr": "ATL",
@@ -94,22 +94,22 @@
   },
   {
    "abbr": "CHI",
-   "wins": 5,
+   "wins": 6,
    "losses": 12
   },
   {
    "abbr": "MIL",
    "wins": 2,
-   "losses": 16
+   "losses": 17
   },
   {
    "abbr": "SAS",
    "wins": 15,
-   "losses": 3
+   "losses": 4
   },
   {
    "abbr": "PHI",
-   "wins": 14,
+   "wins": 15,
    "losses": 4
   },
   {
@@ -124,13 +124,13 @@
   },
   {
    "abbr": "GSW",
-   "wins": 9,
+   "wins": 10,
    "losses": 8
   },
   {
    "abbr": "CHA",
    "wins": 4,
-   "losses": 12
+   "losses": 13
   },
   {
    "abbr": "WAS",
@@ -140,11 +140,11 @@
   {
    "abbr": "SAC",
    "wins": 2,
-   "losses": 15
+   "losses": 16
   },
   {
    "abbr": "BKN",
-   "wins": 3,
+   "wins": 4,
    "losses": 13
   },
   {
