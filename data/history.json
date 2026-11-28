@@ -355,5 +355,26 @@
 "wins": 98,
 "losses": 81,
 "proj": 424.0
+},
+{
+"date": "2026-11-28",
+"owner": "Cole",
+"wins": 91,
+"losses": 98,
+"proj": 411.3
+},
+{
+"date": "2026-11-28",
+"owner": "Joey",
+"wins": 88,
+"losses": 97,
+"proj": 396.3
+},
+{
+"date": "2026-11-28",
+"owner": "Robby",
+"wins": 102,
+"losses": 86,
+"proj": 423.6
 }
 ]

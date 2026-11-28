@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-27T09:59:16Z",
+ "updated": "2026-11-28T09:46:53Z",
  "source": "ESPN standings feed",
  "teams": [
   {
    "abbr": "NYK",
    "wins": 12,
-   "losses": 6
+   "losses": 7
   },
   {
    "abbr": "BOS",
    "wins": 12,
-   "losses": 6
+   "losses": 7
   },
   {
    "abbr": "DEN",
-   "wins": 10,
+   "wins": 11,
    "losses": 6
   },
   {
@@ -25,31 +25,31 @@
   {
    "abbr": "IND",
    "wins": 6,
-   "losses": 12
+   "losses": 13
   },
   {
    "abbr": "PHX",
    "wins": 9,
-   "losses": 8
+   "losses": 9
   },
   {
    "abbr": "POR",
-   "wins": 12,
+   "wins": 13,
    "losses": 6
   },
   {
    "abbr": "LAC",
    "wins": 4,
-   "losses": 13
+   "losses": 14
   },
   {
    "abbr": "NOP",
-   "wins": 5,
+   "wins": 6,
    "losses": 14
   },
   {
    "abbr": "MEM",
-   "wins": 14,
+   "wins": 15,
    "losses": 5
   },
   {
@@ -65,32 +65,32 @@
   {
    "abbr": "MIN",
    "wins": 14,
-   "losses": 5
+   "losses": 6
   },
   {
    "abbr": "DET",
-   "wins": 11,
+   "wins": 12,
    "losses": 6
   },
   {
    "abbr": "MIA",
-   "wins": 10,
+   "wins": 11,
    "losses": 7
   },
   {
    "abbr": "ATL",
-   "wins": 11,
+   "wins": 12,
    "losses": 6
   },
   {
    "abbr": "DAL",
-   "wins": 11,
+   "wins": 12,
    "losses": 7
   },
   {
    "abbr": "UTA",
    "wins": 3,
-   "losses": 16
+   "losses": 17
   },
   {
    "abbr": "CHI",
@@ -100,21 +100,21 @@
   {
    "abbr": "MIL",
    "wins": 2,
-   "losses": 17
+   "losses": 18
   },
   {
    "abbr": "SAS",
-   "wins": 15,
+   "wins": 16,
    "losses": 4
   },
   {
    "abbr": "PHI",
-   "wins": 15,
+   "wins": 16,
    "losses": 4
   },
   {
    "abbr": "TOR",
-   "wins": 6,
+   "wins": 7,
    "losses": 11
   },
   {
@@ -125,7 +125,7 @@
   {
    "abbr": "GSW",
    "wins": 10,
-   "losses": 8
+   "losses": 9
   },
   {
    "abbr": "CHA",
@@ -145,12 +145,12 @@
   {
    "abbr": "BKN",
    "wins": 4,
-   "losses": 13
+   "losses": 14
   },
   {
    "abbr": "LAL",
    "wins": 15,
-   "losses": 3
+   "losses": 4
   }
  ]
 }
